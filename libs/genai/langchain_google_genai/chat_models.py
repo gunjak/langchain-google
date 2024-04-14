@@ -466,7 +466,7 @@ class ChatGoogleGenerativeAI(_BaseGoogleGenerativeAI, BaseChatModel):
     def validate_environment(cls, values: Dict) -> Dict:
         """Validates params and passes them to google-generativeai package."""
         additional_headers = values.get("additional_headers") or {}
-        default_metadata = tuple(additional_headers.items())
+        default_metadata = list(additional_headers.items())
 
         if values.get("credentials"):
             genai.configure(
